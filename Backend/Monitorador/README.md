@@ -1,15 +1,36 @@
 # Monitorador
 
-## Build
+## Pré-requisitos
+
+- Docker
+- Docker Compose
+
+## Rodar o projeto
 
 ```bash
-docker build -t monitorador .
+cd docker
+
+# opcional: customizar credenciais do banco
+cp .env.example .env
+
+docker compose up -d
 ```
 
-## Run
+A aplicação estará disponível em `http://localhost:8000`.
+
+O banco PostgreSQL estará disponível em `localhost:5432` (volátil — dados perdidos ao derrubar o container).
+
+## Migrations e Seeders
 
 ```bash
-docker run --rm --name monitor -it -p 8000:8000 -v $(pwd)/:/var/www/ monitorador
+docker compose exec app php artisan migrate
+docker compose exec app php artisan db:seed
+```
+
+## Derrubar o ambiente
+
+```bash
+docker compose down
 ```
 
 ## Rotas
@@ -35,12 +56,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO monitorador_ro;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO monitorador_ro;
 ```
 
-Configurar no `.env`:
+Configurar no `docker/.env`:
 
 ```env
-DB_CONNECTION=pgsql
-DB_HOST=<host>
-DB_PORT=5432
 DB_DATABASE=<banco>
 DB_USERNAME=monitorador_ro
 DB_PASSWORD=senha
