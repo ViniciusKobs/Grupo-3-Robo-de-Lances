@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('url');
             $table->uuid('platform_id');
             $table->foreign('platform_id')->references('id')->on('Platforms');
+            $table->timestamp('last_checked_at')->nullable();
             $table->timestamps();
         });
     }
