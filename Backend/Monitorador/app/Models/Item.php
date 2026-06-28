@@ -14,7 +14,9 @@ class Item extends Model implements ItemRepository
 
     protected $table = 'Items';
 
-    protected $fillable = ['url', 'tender_id', 'last_checked_at'];
+    protected $fillable = ['url', 'tender_id', 'last_checked_at', 'active'];
+
+    protected $casts = ['active' => 'boolean'];
 
     public function tender(): BelongsTo
     {

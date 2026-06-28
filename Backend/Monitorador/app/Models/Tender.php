@@ -14,7 +14,9 @@ class Tender extends Model implements TenderRepository
 
     protected $table = 'Tenders';
 
-    protected $fillable = ['url', 'platform_id', 'last_checked_at'];
+    protected $fillable = ['url', 'platform_id', 'last_checked_at', 'active'];
+
+    protected $casts = ['active' => 'boolean'];
 
     public function platform(): BelongsTo
     {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('tender_id');
             $table->foreign('tender_id')->references('id')->on('Tenders');
             $table->timestamp('last_checked_at')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
