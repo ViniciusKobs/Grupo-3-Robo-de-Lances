@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Items', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('url');
             $table->uuid('tender_id');
-            $table->foreign('tender_id')->references('id')->on('Tenders');
+            $table->foreign('tender_id')->references('id')->on('tenders')->onDelete('cascade');
             $table->timestamp('last_checked_at')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Items');
+        Schema::dropIfExists('items');
     }
 };

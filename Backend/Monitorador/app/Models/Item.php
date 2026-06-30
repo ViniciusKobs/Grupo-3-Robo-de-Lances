@@ -12,7 +12,7 @@ class Item extends Model implements ItemRepository
 {
     use HasUuids;
 
-    protected $table = 'Items';
+    protected $table = 'items';
 
     protected $fillable = ['url', 'tender_id', 'last_checked_at', 'active'];
 

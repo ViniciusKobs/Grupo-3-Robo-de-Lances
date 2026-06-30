@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('UserTenders', function (Blueprint $table) {
+        Schema::create('user_tenders', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->foreign('user_id')->references('id')->on('Users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->uuid('tender_id');
-            $table->foreign('tender_id')->references('id')->on('Tenders');
+            $table->foreign('tender_id')->references('id')->on('tenders')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('UserTenders');
+        Schema::dropIfExists('user_tenders');
     }
 };

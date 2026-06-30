@@ -11,7 +11,7 @@ class UserTender extends Model implements UserTenderRepository
 {
     use HasUuids;
 
-    protected $table = 'UserTenders';
+    protected $table = 'user_tenders';
 
     protected $fillable = ['user_id', 'tender_id'];
 

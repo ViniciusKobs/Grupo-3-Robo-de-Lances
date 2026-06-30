@@ -11,7 +11,7 @@ class Platform extends Model implements PlatformRepository
 {
     use HasUuids;
 
-    protected $table = 'Platforms';
+    protected $table = 'platforms';
 
     protected $fillable = ['domain'];
 

@@ -11,7 +11,7 @@ class User extends Model implements UserRepository
 {
     use HasUuids;
 
-    protected $table = 'Users';
+    protected $table = 'users';
 
     protected $fillable = [];
 

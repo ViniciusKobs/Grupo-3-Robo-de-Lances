@@ -12,6 +12,8 @@ services:
       DB_DATABASE: ${DB_DATABASE:-monitorador}
       DB_USERNAME: ${DB_USERNAME:-monitorador}
       DB_PASSWORD: ${DB_PASSWORD:-secret}
+    volumes:
+      - ../.env:/var/www/.env
     depends_on:
       db:
         condition: service_healthy

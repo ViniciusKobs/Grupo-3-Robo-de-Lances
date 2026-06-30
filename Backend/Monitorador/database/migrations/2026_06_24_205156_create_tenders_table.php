@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Tenders', function (Blueprint $table) {
+        Schema::create('tenders', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('url');
             $table->uuid('platform_id');
-            $table->foreign('platform_id')->references('id')->on('Platforms');
+            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
             $table->timestamp('last_checked_at')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Tenders');
+        Schema::dropIfExists('tenders');
     }
 };

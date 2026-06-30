@@ -11,7 +11,7 @@ class UserItem extends Model implements UserItemRepository
 {
     use HasUuids;
 
-    protected $table = 'UserItems';
+    protected $table = 'user_items';
 
     protected $fillable = ['user_id', 'item_id'];
 
